@@ -309,7 +309,7 @@
             </Grid>
         </DockPanel>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Background="{StaticResource Toolbar}">
+        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Background="{StaticResource Toolbar}">
             <Button Name="bt_create1" Content="Add" Style="{StaticResource Style_SideButton}" Template="{StaticResource Template_SideButton}"/>
             <Button Name="bt_create2" Content="Delete" Style="{StaticResource Style_SideButton}" Template="{StaticResource Template_SideButton}"/>
             <Button Name="bt_create3" Content="Modify" Style="{StaticResource Style_SideButton}" Template="{StaticResource Template_SideButton}"/>
