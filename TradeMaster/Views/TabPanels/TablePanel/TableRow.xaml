@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="TradeMaster.Views.TabPanels.TablePanel.TableRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+
+    <Grid Name="GdTableButtonRow" Margin="0 5" Height="35" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <Style x:Key="TBTableButtonStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="15 5"/>
+                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="IsReadOnly" Value="True"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <Path MouseUp="Edit_MouseUp" Grid.Column="0" Margin="10,5,0,5" Stretch="Uniform" ToolTip="edit" Data="M17.75,7L14,3.25l-10,10L4,17h3.75l10,-10zM20.71,4.04c0.39,-0.39 0.39,-1.02 0,-1.41L18.37,0.29c-0.39,-0.39 -1.02,-0.39 -1.41,0L15,2.25 18.75,6l1.96,-1.96z">
+            <Path.Style>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="Fill" Value="#FF63C763"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" Value="Green"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Path.Style>
+        </Path>
+        <TextBox Name="TbTableButton" LostFocus="TbTableButton_FocusLost" KeyUp="TbTableButton_KeyUp" Grid.Column="1" Text="Table1" Style="{StaticResource TBTableButtonStyle}"/>
+        <Label Grid.Column="2" Content="Binded to" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15"/>
+        <TextBox Name="TbTableName" Grid.Column="3" Text="Database.Table1" HorizontalContentAlignment="Left" Style="{StaticResource TBTableButtonStyle}"/>
+        <Button Name="Drag" IsTabStop="False" Click="Order_Clicked" Grid.Column="4" Margin="0,5,10,5" ToolTip="order">
+            <Path Fill="DarkGray" Stretch="Uniform" Data="M20,9H4v2h16V9zM4,15h16v-2H4v2z"/>
+
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Transparent" BorderThickness="0" SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="TradeMaster.Views.UserControls.TableActionButtons"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    
+    <StackPanel Orientation="Horizontal">
+        <StackPanel.Resources>
+            <ControlTemplate x:Key="BtTemplate" TargetType="{x:Type Button}">
+                <StackPanel Width="50">
+                    <Border x:Name="Bd" Margin="0,15,0,0" Width="30" Height="30" CornerRadius="15" Background="Red">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <Label x:Name="Tb" Content="{TemplateBinding Tag}"  FontWeight="SemiBold" Height="20" Padding="0,5,0,0" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" TargetName="Bd" Value="{StaticResource Searchbar}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </StackPanel.Resources>
+        
+        <Button Template="{StaticResource BtTemplate}" Tag="Add" IsTabStop="False" Command="{Binding AddCommand}" CommandParameter="BtAdd">
+            <Image Source="C:\Users\Arvind\Downloads\material-design-icons-3.0.1\content\1x_web\ic_add_circle_outline_white_24dp.png" Stretch="None" />
+        </Button>
+
+        <Button Template="{StaticResource BtTemplate}" Tag="Delete" IsTabStop="False" Command="{Binding DeleteCommand}" CommandParameter="BtDelete">
+            <Image Source="C:\Users\Arvind\Downloads\material-design-icons-3.0.1\action\1x_web\ic_delete_forever_white_18dp.png" Stretch="None" />
+        </Button>
+
+        <Button Template="{StaticResource BtTemplate}" Tag="Reload" IsTabStop="False" Command="{Binding RefreshCommand}" CommandParameter="BtRefresh">
+            <Image Source="C:\Users\Arvind\Downloads\material-design-icons-3.0.1\action\1x_web\ic_autorenew_white_18dp.png" Stretch="None" />
+        </Button>
+        
+        <Button Margin="0,0,5,0" Template="{StaticResource BtTemplate}" Tag="Update" IsTabStop="False" Command="{Binding UpdateCommand}" CommandParameter="BtUpdate">
+            <Image Source="C:\Users\Arvind\Downloads\material-design-icons-3.0.1\action\1x_web\ic_autorenew_white_18dp.png" Stretch="None" />
+        </Button>
+        
+    </StackPanel>
+</UserControl>

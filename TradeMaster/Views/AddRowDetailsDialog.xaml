@@ -1,0 +1,87 @@
+﻿<Window x:Class="TradeMaster.Views.AddRowDetailsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeMaster.Views"
+        mc:Ignorable="d" Background="Transparent" AllowsTransparency="True"
+        Title="AddRowDetailsDialog" Height="700" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+
+        <Style x:Key="submitButtonStyle" TargetType="Button">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10,10,10,0"/>
+            <Setter Property="Width" Value="415"/>
+            <Setter Property="Height" Value="27"/>
+        </Style>
+
+        <ControlTemplate x:Key="submitButtonTemplate" TargetType="Button">
+            <Grid>
+                <Border Name="border" CornerRadius="3" Background="BlueViolet"/>
+                <Label Content="Submit" HorizontalAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Padding="0" Foreground="White" FontFamily="Segoe ui"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="DeepSkyBlue"/>
+                    <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="Blue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="exitButtonTemplate" TargetType="{x:Type Button}">
+            <Border Name="exitBorder" Width="20" Height="20" CornerRadius="10" RenderOptions.EdgeMode="Aliased">
+                <Image MouseUp="Close_Clicked" ToolTip="Close" Width="15" Height="15" Source="C:\Users\Arvind\Downloads\material-design-icons-3.0.1\content\1x_web\ic_clear_black_18dp.png" Stretch="UniformToFill" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="exitBorder" Value="#FFE1E1E1"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+
+    </Window.Resources>
+
+    <Border Name="border" Margin="20" CornerRadius="15" Background="White">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="20"/>
+        </Border.Effect>
+
+        <Grid Margin="10" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="520"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" VerticalAlignment="Top">
+                <Button Name="exitBorder" Click="Close_Clicked" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Right" Template="{StaticResource exitButtonTemplate}"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Columns below is associated with table : "/>
+                <TextBox Width="150" Text="Table Name here "/>
+
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible" Background="#FFEEF3FA">
+
+                <StackPanel Name="stackPanel">
+
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Name="bt_submit" Click="Submit_Clicked" Style="{StaticResource submitButtonStyle}" Template="{StaticResource submitButtonTemplate}"/>
+
+        </Grid>
+    </Border>
+
+</Window>
